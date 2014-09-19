@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Roommate Helper: Tools for roommates</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<header>
+    <h1>Roommate Helper: Rent divider</h1>
+    <h2 id="mode"></h2><input id="switch" type="submit" value="Switch">
+</header>
+<body>
+<div id="left">
+    <div id="simple">
+        <h2>Add a roommate:</h2>
+        <h3>Name: </h3><input id="name" type="text" name="name"><input id="add_rm_button" type="submit" value="Add">
+        <h3>Total Rent: </h3><input type="text" name="rent">
+    </div>
+    <div id="complex">
+        <h3>Total sq. feet of house: </h3><input type="text" name="total_sqft">
+    </div>
+</div>
+<div id="right">
+    <div id="roommates"><h2 id="roommates"></h2></div>
+    <div id="result"></div>
+</div>
+</body>
+<footer>
+    <p>A Brendan Crawford webapp, Copyright 2014</p>
+</footer>
