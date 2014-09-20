@@ -25,13 +25,12 @@ $(document).ready(function () {
         });    
         mates[name] = 0; 
         }
-        for (n in mates) {
-            console.log(n);
-        }
     });
+    
+
 
     // when switch button clicked, changes modes
-    $("#switch").click(function () {
+    $("#mode").click(function () {
         if (mode) {
             mode = false;
         } else {
