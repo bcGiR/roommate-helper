@@ -1,0 +1,38 @@
+/* OpenSans font */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+
+/***   Layout   ***/
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+header, #content, footer {
+    position: fixed;
+    width:100%;
+}
+
+header {
+    height:150px;
+}
+
+#content {
+    top:150px;
+}
+
+#right, #left {
+    position: fixed;
+    width: 50%;
+}
+
+#right {
+    left:50%;
+}
+
+#complex {
+    visibility:hidden;
+}
+
+footer {
+    bottom:0px;
+}
