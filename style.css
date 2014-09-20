@@ -30,7 +30,7 @@ header {
 }
 
 #complex {
-    visibility:hidden;
+    display:none;
 }
 
 footer {

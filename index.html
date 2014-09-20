@@ -16,17 +16,24 @@
 <div id="left">
     <div id="simple">
         <h2>Add a roommate:</h2>
-        <h3>Name: </h3><input id="name" type="text" name="name"><input id="add_rm_button" type="submit" value="Add">
-        <h3>Total Rent: </h3><input id="rent" type="text" name="rent">
+        <label for="name">Name: </label>
+        <input id="name" type="text" name="name"><input id="add_rm_button" type="submit" value="Add"><br>
+        <h2>House Details:</h2>
+        <label for="rent">Total Rent: </label>
+        <input id="rent" type="text" name="rent">
     </div>
     <div id="complex">
-        <h3>Total sq. feet of house: </h3><input id="total_sqft" type="text" name="total_sqft">
+        <div id="total_sqft">
+        <label for="total_sqft">Total sq. feet of house: </label>
+        <input id="total_sqft" type="text" name="total_sqft">
+        </div>
+        <div id="sqft"></div>
     </div>
 </div>
 <div id="right">
     <div id="roommates"></div>
     <div id="result">
-        <div id="rent_result"></div>
+        <ul id="rent_result"></ul>
     </div>
 </div>
 </div>

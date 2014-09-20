@@ -17,30 +17,49 @@ $(document).ready(function () {
     $("#add_rm_button").click(function () {
         var name = $("#name").val();
         if (name != "") {
-        var roommate = $("<h3>" + name + "</h3>");
-        $("#roommates").append(roommate);
-        $(roommate).click(function () {
-            delete mates[name];
-            $(roommate).remove();
-        });    
-        mates[name] = 0; 
-        }
-    });
-    
-    $("#rent").change(function () {
-        var rent = parseInt($(this).val());
-        var result = "";
-        if (!isNaN(rent)) {
-            for (roommate in mates) {
-                result += "<h3>" + roommate + ": " + String(rent/Object.keys(mates).length); + "</h3>"
-            }
-            $("#rent_result").html(result);
+            var roommate = $("<li>" + name + "</li>");
+            $("#roommates").append(roommate);
+            $(roommate).click(function () {
+                delete mates[name];
+                $(roommate).remove();
+                update();
+            });    
+            mates[name] = 0;
+            update();
         }
     });
 
+    var calc_rent = function () {
+        var rent = parseInt($("#rent").val());
+        var result = "";
+        if (!isNaN(rent)) {
+            for (roommate in mates) {
+                result += "<h3>" + roommate + ": " + String((rent/Object.keys(mates).length).toFixed(2)); + "</h3>"
+            }
+            $("#rent_result").html(result);
+        }
+    };
+    $("#rent").change(calc_rent);
+
+    var update_sqft = function () {
+        var sqft_html = "";
+        for (roommate in mates) {
+            sqft_html += '<label for="' + roommate + '">' + roommate + ':' + 
+                '</label><input id="' + roommate + '" type="text" name="' + roommate + '"><br>';
+        }
+        $("#sqft").html(sqft_html);
+    };
+    
+    var update = function() {
+        update_sqft();
+        calc_rent();
+    }
+
     // when switch button clicked, changes modes
     $("#mode").click(function () {
-        if (mode) {
+        update(); 
+        $("#complex").toggle();
+        if (mode) { // if complex set to simple, else set to complex
             mode = false;
         } else {
             mode = true;
