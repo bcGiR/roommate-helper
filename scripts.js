@@ -16,7 +16,7 @@ $(document).ready(function () {
     // button adds roommate to the array
     $("#add_rm_button").click(function () {
         var name = $("#name").val();
-        if (name != "") {
+        if (name != "" && !mates.hasOwnProperty(name)) {
             var roommate = $("<li>" + name + "</li>");
             $("#roommates").append(roommate);
             $(roommate).click(function () {
