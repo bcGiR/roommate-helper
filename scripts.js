@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     // button adds roommate to the array
     $("#add_rm_button").click(function () {
-        var name = $("#name").val()
+        var name = $("#name").val();
         if (name != "") {
         var roommate = $("<h3>" + name + "</h3>");
         $("#roommates").append(roommate);
@@ -27,7 +27,16 @@ $(document).ready(function () {
         }
     });
     
-
+    $("#rent").change(function () {
+        var rent = parseInt($(this).val());
+        var result = "";
+        if (!isNaN(rent)) {
+            for (roommate in mates) {
+                result += "<h3>" + roommate + ": " + String(rent/Object.keys(mates).length); + "</h3>"
+            }
+            $("#rent_result").html(result);
+        }
+    });
 
     // when switch button clicked, changes modes
     $("#mode").click(function () {
