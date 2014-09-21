@@ -29,16 +29,51 @@ $(document).ready(function () {
         }
     });
 
-    var calc_rent = function () {
+    var calc_simple = function () {
         var rent = parseInt($("#rent").val());
         var result = "";
         if (!isNaN(rent)) {
             for (roommate in mates) {
-                result += "<h3>" + roommate + ": " + String((rent/Object.keys(mates).length).toFixed(2)); + "</h3>"
+                result += "<h3>" + roommate + ": " + String((rent/Object.keys(mates).length).toFixed(2)) + "</h3>";
             }
-            $("#rent_result").html(result);
         }
-    };
+        return result;
+    }
+
+    var calc_complex = function () {
+        var rent = parseInt($("#rent").val());
+        var total_sqft = parseInt($("#total_sqft").val());
+        var common_sqft = total_sqft;
+        var adjusted_sqft = 0;
+        var rooms = {};
+        var result = "";
+        if (!isNaN(rent)) {
+            $("#sqft input").each(function () {
+                rooms[$(this).attr("name")] = parseInt($(this).val());
+            });
+            for (room in rooms) {
+                common_sqft -= rooms[room];
+                adjusted_sqft += rooms[room];
+            }
+            adjusted_sqft += common_sqft * Object.keys(mates).length; // adjusted is each rommates space (including common) added together
+            for (roommate in mates) {
+                result += "<h3>" + roommate + ": " + 
+                    String((rent*(rooms[roommate] + common_sqft)/adjusted_sqft).toFixed(2)) + 
+                    "</h3>";
+            }
+        }
+        return result;
+    }
+
+    var calc_rent = function () {
+        var result;
+        if (mode) {
+            result = calc_complex();
+        } else {
+            result = calc_simple();
+        }
+        $("#rent_result").html(result);
+    }
     $("#rent").change(calc_rent);
 
     var update_sqft = function () {
