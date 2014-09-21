@@ -5,6 +5,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
 }
 
 header, #content, footer {
@@ -13,20 +14,34 @@ header, #content, footer {
 }
 
 header {
-    height:150px;
+    height:80px;
+    border-bottom: 2px solid;
+}
+
+header h1, #right, #left, footer {
+    padding-left: 10px;
 }
 
 #content {
-    top:150px;
+    top:80px;
 }
 
 #right, #left {
-    position: fixed;
-    width: 50%;
+    position: relative;
+}
+
+#left {
+    border: 2px solid;
+    left: 5%;
+    top: 20px;
+    width: 25%;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 #right {
-    left:50%;
+    left: 35%;
+    width: 60%;
 }
 
 #complex {
@@ -35,4 +50,5 @@ header {
 
 footer {
     bottom:0px;
+    border-top: 2px solid;
 }
